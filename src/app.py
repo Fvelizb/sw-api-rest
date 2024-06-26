@@ -65,13 +65,13 @@ def get_users():
 
 @app.route('/users/favorites', methods=['GET'])
 def get_user_favorites():
-    user_id = 1  # Replace this with actual user identification logic
+    user_id = 1  
     favorites = Favorite.query.filter_by(user_id=user_id).all()
     return jsonify([favorite.serialize() for favorite in favorites]), 200
 
 @app.route('/favorite/planet/<int:planet_id>', methods=['POST'])
 def add_favorite_planet(planet_id):
-    user_id = 1  # Replace this with actual user identification logic
+    user_id = 1  
     new_favorite = Favorite(user_id=user_id, planet_id=planet_id)
     db.session.add(new_favorite)
     db.session.commit()
@@ -79,7 +79,7 @@ def add_favorite_planet(planet_id):
 
 @app.route('/favorite/people/<int:people_id>', methods=['POST'])
 def add_favorite_people(people_id):
-    user_id = 1  # Replace this with actual user identification logic
+    user_id = 1  
     new_favorite = Favorite(user_id=user_id, people_id=people_id)
     db.session.add(new_favorite)
     db.session.commit()
@@ -87,7 +87,7 @@ def add_favorite_people(people_id):
 
 @app.route('/favorite/planet/<int:planet_id>', methods=['DELETE'])
 def delete_favorite_planet(planet_id):
-    user_id = 1  # Replace this with actual user identification logic
+    user_id = 1  
     favorite = Favorite.query.filter_by(user_id=user_id, planet_id=planet_id).first_or_404()
     db.session.delete(favorite)
     db.session.commit()
@@ -95,7 +95,7 @@ def delete_favorite_planet(planet_id):
 
 @app.route('/favorite/people/<int:people_id>', methods=['DELETE'])
 def delete_favorite_people(people_id):
-    user_id = 1  # Replace this with actual user identification logic
+    user_id = 1  
     favorite = Favorite.query.filter_by(user_id=user_id, people_id=people_id).first_or_404()
     db.session.delete(favorite)
     db.session.commit()
